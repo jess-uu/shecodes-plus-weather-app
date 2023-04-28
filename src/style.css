@@ -1,0 +1,148 @@
+body {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  background-size: cover;
+  color: #000;
+  font-weight: 300px;
+  text-align: center;
+}
+
+.container {
+  border: solid 1px #604c96;
+  width: 45%;
+  padding: 30px;
+  position: relative;
+  top: 75px;
+  border-radius: 6px;
+  background-color: #fff;
+  opacity: 0.8;
+}
+.mb-3 {
+  text-align: center;
+}
+.input-form {
+  border: solid 1px #604c96;
+  border-radius: 6px;
+  font-size: 16px;
+  padding: 6px;
+  height: 38px;
+  width: 60%;
+}
+input {
+  outline-color: #604c96;
+}
+.btn {
+  border: solid 1px #604c96;
+  color: #fff;
+  background-color: #604c96;
+  transition: all 150ms ease;
+}
+.btn:hover {
+  border: solid 1px #9c7bf7;
+  color: #fff;
+  background-color: #9c7bf7;
+  cursor: pointer;
+}
+h1 {
+  font-weight: 300;
+  text-align: center;
+  margin: 0px;
+  padding: 10px 10px 0px 10px;
+}
+h2 {
+  text-align: center;
+  font-size: 14px;
+  margin: 0px;
+  padding: 5px 0px 10px 0px;
+}
+h3 {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 0px;
+  margin: 0px;
+}
+.current-city-temp {
+  width: 50%;
+  margin: 0 auto;
+  font-size: 40px;
+}
+.current-icon {
+  font-size: 60px;
+  padding: 0px;
+}
+#temperature-description {
+  font-size: 14px;
+  padding: 0px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+#humidity,
+#wind {
+  font-size: 12px;
+  padding: 0px;
+}
+.current-measurement {
+  margin: 0 auto;
+  padding: 10px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+.convert {
+  font-size: 16px;
+  padding: 0px;
+  text-align: center;
+  font-weight: 500;
+}
+#convert-celsius,
+#convert-fahrenheit {
+  color: #604c96;
+  text-decoration: none;
+}
+#convert-celsius:hover,
+#convert-fahrenheit:hover {
+  color: #604c96;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.current-deg {
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+.forecast-col {
+  text-align: center;
+  font-size: 16px;
+  padding: 5px;
+}
+.forecast-day {
+  text-align: center;
+  font-weight: bold;
+  display: block;
+  padding: 10px;
+}
+.forecast-icon {
+  text-align: center;
+  font-size: 30px;
+  padding: 10px;
+}
+.forecast-temp {
+  text-align: center;
+  display: block;
+  padding: 10px;
+}
+.footer {
+  position: relative;
+  bottom: -100px;
+  font-size: 14px;
+  font-weight: 400;
+}
+a {
+  color: #000;
+  text-decoration: underline;
+}
