@@ -1,5 +1,7 @@
 body {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
+  background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/079/183/original/background.png?1682670999");
+  background-size: cover;
   background-color: #d3c4ff;
   color: #000;
   font-weight: 300px;
