@@ -1,6 +1,5 @@
 let celsiusActive = true;
 let cityResult = "Melbourne";
-
 let apiKey = "b2613fc2433dc611b2f664d7a243d6bd";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=`;
 
@@ -13,6 +12,7 @@ function getCity(event) {
     axios
       .get(`${apiUrl}${cityResult}&appid=${apiKey}&units=metric`)
       .then(showTemperature);
+    celsiusActive = true;
   } else {
     alert("Please search for a city");
   }
@@ -46,6 +46,7 @@ function convertCS(event) {
   }
 }
 
+// show current date/time information
 function updateDateTime() {
   let days = [
     "Sunday",
@@ -72,13 +73,14 @@ let currentDate = new Date();
 
 date.innerHTML = updateDateTime(currentDate);
 
-// capture click/submit events
+// capture temp conversion clicks
 let convertFahrenheit = document.querySelector("#convert-fahrenheit");
 convertFahrenheit.addEventListener("click", convertFH);
 
 let convertCelsius = document.querySelector("#convert-celsius");
 convertCelsius.addEventListener("click", convertCS);
 
+// show temperature of searched city
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#temperature");
@@ -88,24 +90,23 @@ function showTemperature(response) {
   let humidity = document.querySelector("#humidity");
   humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   let windSpeed = document.querySelector("#wind");
-  console.log(response.data.wind.speed);
   windSpeed.innerHTML = `Windspeed: ${Math.round(
     response.data.wind.speed
   )}km/h`;
   let h1 = document.querySelector("h1");
   h1.innerHTML = response.data.name;
-  let celsiusActive = true;
 }
 axios
   .get(`${apiUrl}${cityResult}&appid=${apiKey}&units=metric`)
   .then(showTemperature);
 
+// show temperature of current location
 function showPosition(position) {
   let long = position.coords.longitude;
   let lat = position.coords.latitude;
   let locUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}&units=metric`;
   axios.get(`${locUrl}`).then(showTemperature);
-  let celsiusActive = true;
+  celsiusActive = true;
 }
 
 function getCurrentPosition(position) {
