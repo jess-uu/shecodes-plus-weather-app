@@ -20,9 +20,10 @@ body {
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.3);
   padding: 30px;
-  position: relative;
-  width: 50%;
-  top: 100px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .city-search {
   margin: 0px auto;
@@ -36,7 +37,9 @@ body {
   padding: 6px;
   height: 38px;
 }
-
+input:focus {
+  border-color: #604c96;
+}
 input {
   outline-color: #604c96;
 }
