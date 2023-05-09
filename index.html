@@ -26,61 +26,61 @@
     ></script>
   </head>
   <body>
-    <div class="container">
+    <div class="container weather-app">
       <!-- Search Bar -->
-      <form id="search">
-        <div class="mb-3">
-          <input
-            type="text"
-            placeholder="Enter a city"
-            class="input-form"
-            id="citySearch"
-          />
-          <button type="submit" class="btn btn-outline-primary" id="search">
-            Search
-          </button>
+      <div class="row align-items-start">
+        <div class="col">
+          <h1>Melbourne</h1>
+          <h2 id="datetime"></h2>
+          <span class="last-updated"></span>
         </div>
-      </form>
-      <button type="submit" class="btn btn-outline-primary" id="location">
-        Current Location
-      </button>
-      <!-- Current City information-->
-      <div class="row current-city">
-        <h1>Melbourne</h1>
-      </div>
-      <div class="row current-time">
-        <h2 id="datetime"></h2>
-        <br />
-        <br />
-      </div>
-      <!-- Current Weather information-->
-      <h3>Current Temperature</h3>
-      <div class="convert">
-        <a href="#" id="convert-celsius">°C</a> /
-        <a href="#" id="convert-fahrenheit">°F</a>
+        <div class="col city-search">
+          <br />
+          <form id="search">
+            <input
+              type="text"
+              placeholder="Enter a city"
+              class="input-form"
+              id="citySearch"
+            />
+            <button type="submit" class="btn btn-outline-primary" id="search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+            <button type="submit" class="btn btn-outline-primary" id="location">
+              <i class="fa-solid fa-location-dot"></i>
+            </button>
+          </form>
+        </div>
       </div>
 
-      <div class="row current-city-temp">
+      <!-- Current City information-->
+      <br />
+      <div class="row current-city">
+        <!-- Current Weather information-->
+        <div class="col"></div>
+
         <div class="col current-icon">
-          <i class="fa-solid fa-cloud-showers-heavy main-icon"></i>
+          <img src="" id="main-icon" />
           <br /><span
             class="justify-content-center"
             id="temperature-description"
           ></span>
         </div>
         <div class="col current-deg justify-content-center">
-          <span class="currentTemp" id="temperature"></span>
-        </div>
-        <div class="row justify-content-center current-measurement">
+          <span class="currentTemp" id="temperature"></span><br />
+          <span class="convert">
+            <a href="#" id="convert-celsius" class="active">°C</a> |
+            <a href="#" id="convert-fahrenheit">°F</a>
+          </span>
           <div class="justify-content-center" id="humidity"></div>
-
           <div class="justify-content-center" id="wind"></div>
         </div>
+        <div class="col"></div>
       </div>
 
       <!--- Forecast -->
       <br />
-      <div class="row forecast"><h2 id="forecast">Forecast</h2></div>
+      <div class="row forecast"><h3 id="forecast">Forecast</h3></div>
       <div class="row forecast">
         <div class="col forecast-col">
           <div class="row forecast-day">Sun</div>
@@ -98,7 +98,9 @@
         </div>
         <div class="col forecast-col">
           <div class="row forecast-day">Tue</div>
-          <div class="row forecast-icon"><i class="fa-solid fa-cloud"></i></div>
+          <div class="row forecast-icon">
+            <i class="fa-solid fa-cloud"></i>
+          </div>
           <div class="row forecast-temp">18°C</div>
         </div>
         <div class="col forecast-col">
@@ -110,20 +112,26 @@
         </div>
         <div class="col forecast-col">
           <div class="row forecast-day">Thu</div>
-          <div class="row forecast-icon"><i class="fa-solid fa-cloud"></i></div>
+          <div class="row forecast-icon">
+            <i class="fa-solid fa-cloud"></i>
+          </div>
           <div class="row forecast-temp">19°C</div>
         </div>
       </div>
+      <div class="row"></div>
     </div>
-    <div class="footer">
-      <a href="https://github.com/jess-uu/shecodes-plus-weather-app"
+    <footer>
+      <a
+        href="https://github.com/jess-uu/shecodes-plus-weather-app"
+        target="_blank"
         >Open-source code</a
       >
       by
       <a href="https://au.linkedin.com/in/jesswats" target="_blank"
         >Jess Watson</a
       >
-    </div>
+    </footer>
+
     <script src="src/script.js"></script>
   </body>
 </html>
