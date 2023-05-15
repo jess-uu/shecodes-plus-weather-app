@@ -34,6 +34,7 @@
           <h2 id="datetime"></h2>
           <span class="last-updated"></span>
         </div>
+        <div class="col-5"></div>
         <div class="col city-search">
           <br />
           <form id="search">
@@ -58,15 +59,14 @@
       <div class="row current-city">
         <!-- Current Weather information-->
         <div class="col"></div>
-
-        <div class="col current-icon">
+        <div class="col-2 current-icon">
           <img src="" id="main-icon" />
           <br /><span
             class="justify-content-center"
             id="temperature-description"
           ></span>
         </div>
-        <div class="col current-deg justify-content-center">
+        <div class="col-2 current-deg justify-content-center">
           <span class="currentTemp" id="temperature"></span><br />
           <span class="convert">
             <a href="#" id="convert-celsius" class="active">°C</a> |
@@ -81,43 +81,7 @@
       <!--- Forecast -->
       <br />
       <div class="row forecast"><h3 id="forecast">Forecast</h3></div>
-      <div class="row forecast">
-        <div class="col forecast-col">
-          <div class="row forecast-day">Sun</div>
-          <div class="row forecast-icon">
-            <i class="fa-solid fa-cloud-showers-heavy"></i>
-          </div>
-          <div class="row forecast-temp">14°C</div>
-        </div>
-        <div class="col forecast-col">
-          <div class="row forecast-day">Mon</div>
-          <div class="row forecast-icon">
-            <i class="fa-solid fa-cloud-showers-heavy"></i>
-          </div>
-          <div class="row forecast-temp">14°C</div>
-        </div>
-        <div class="col forecast-col">
-          <div class="row forecast-day">Tue</div>
-          <div class="row forecast-icon">
-            <i class="fa-solid fa-cloud"></i>
-          </div>
-          <div class="row forecast-temp">18°C</div>
-        </div>
-        <div class="col forecast-col">
-          <div class="row forecast-day">Wed</div>
-          <div class="row forecast-icon">
-            <i class="fa-solid fa-cloud-showers-heavy"></i>
-          </div>
-          <div class="row forecast-temp">17°C</div>
-        </div>
-        <div class="col forecast-col">
-          <div class="row forecast-day">Thu</div>
-          <div class="row forecast-icon">
-            <i class="fa-solid fa-cloud"></i>
-          </div>
-          <div class="row forecast-temp">19°C</div>
-        </div>
-      </div>
+      <div class="row weather-forecast" id="weather-forecast"></div>
       <div class="row"></div>
     </div>
     <footer>

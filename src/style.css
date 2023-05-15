@@ -18,7 +18,7 @@ body {
 .weather-app {
   border: solid 1px #604c96;
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.2);
   padding: 30px;
   position: fixed;
   top: 50%;
@@ -144,17 +144,30 @@ h3 {
   font-size: 16px;
   padding: 5px;
 }
+.forecast-desc {
+  display: block;
+  text-align: center;
+  font-size: 14px;
+}
 .forecast-day {
   text-align: center;
   font-weight: bold;
   display: block;
-  padding: 10px;
+  padding: 0px;
+}
+.forecast-min {
+  opacity: 0.6;
+}
+.forecast-max {
+  font-weight: bold;
 }
 .forecast-icon {
   text-align: center;
-  font-size: 30px;
-  padding: 10px;
+  padding: 0px;
+  width: 100px;
+  align-items: center;
 }
+
 .forecast-temp {
   text-align: center;
   display: block;
