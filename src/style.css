@@ -89,7 +89,8 @@ h3 {
 }
 #temperature-description,
 #humidity,
-#wind {
+#wind,
+#feels {
   font-size: 14px;
   padding: 0px;
   display: flex;
@@ -105,31 +106,9 @@ h3 {
   color: rgba(0, 0, 0, 0.8);
   font-style: italic;
 }
-.convert {
-  font-size: 16px;
-  padding: 0px;
-  text-align: center;
-}
-#convert-celsius,
-#convert-fahrenheit {
-  color: #604c96;
-  text-decoration: none;
-  font-weight: 500;
-}
 
-#convert-celsius:hover,
-#convert-fahrenheit:hover {
-  color: #604c96;
-  text-decoration: none;
-  cursor: pointer;
-}
-.active#convert-celsius,
-.active#convert-fahrenheit {
-  text-decoration: none;
-  color: #000;
-  cursor: default;
-}
-.current-deg {
+.current-deg,
+.current-icon {
   margin: 0px;
   padding: 0px;
   text-align: center;

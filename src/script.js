@@ -1,4 +1,3 @@
-let celsiusActive = true;
 let cityResult = "Melbourne";
 let apiKey = "dc051b10a64333cf3ob6tb0e6afc3da3";
 let apiUrl = `https://api.shecodes.io/weather/v1/current?query=`;
@@ -11,41 +10,11 @@ function getCity(event) {
     axios
       .get(`${apiUrl}${cityResult}&key=${apiKey}&units=metric`)
       .then(showTemperature);
-    celsiusActive = true;
   } else {
   }
 }
 let citySearch = document.querySelector("#search");
 citySearch.addEventListener("submit", getCity);
-
-// convert to FH
-function convertFH(event) {
-  event.preventDefault();
-  if (celsiusActive === true) {
-    let updateFH = document.querySelector(".currentTemp");
-    let temp = parseInt(updateFH.innerHTML);
-    updateFH.innerHTML = `${Math.round((temp * 9) / 5 + 32)}°F`;
-    celsiusActive = false;
-    convertCelsius.classList.remove("active");
-    convertFahrenheit.classList.add("active");
-  } else {
-  }
-}
-//convert to CS
-function convertCS(event) {
-  event.preventDefault();
-  if (celsiusActive === false) {
-    let tempToCS = document.querySelector(".currentTemp");
-    let temp = parseInt(tempToCS.innerHTML);
-    let updateCS = document.querySelector(".currentTemp");
-    let convertCS = Math.round(((temp - 32) * 5) / 9);
-    updateCS.innerHTML = `${convertCS}°C`;
-    celsiusActive = true;
-    convertFahrenheit.classList.remove("active");
-    convertCelsius.classList.add("active");
-  } else {
-  }
-}
 
 // show current date/time information
 function updateDateTime() {
@@ -90,14 +59,7 @@ let date = document.querySelector("h2#datetime");
 let currentDate = new Date();
 date.innerHTML = updateDateTime(currentDate);
 
-// capture temp conversion clicks
-let convertFahrenheit = document.querySelector("#convert-fahrenheit");
-convertFahrenheit.addEventListener("click", convertFH);
-
-let convertCelsius = document.querySelector("#convert-celsius");
-convertCelsius.addEventListener("click", convertCS);
-
-// show temperature of searched city
+// show temperature of searched/geolocation city
 function showTemperature(response) {
   let temperature = Math.round(response.data.temperature.current);
   let temperatureElement = document.querySelector("#temperature");
@@ -110,6 +72,10 @@ function showTemperature(response) {
   windSpeed.innerHTML = `Windspeed: ${Math.round(
     response.data.wind.speed
   )}km/h`;
+  let feelsLike = document.querySelector("#feels");
+  feelsLike.innerHTML = `Feels like: ${Math.round(
+    response.data.temperature.feels_like
+  )}°C`;
   let h1 = document.querySelector("h1");
   h1.innerHTML = response.data.city;
   let updateTime = document.querySelector(".last-updated");
@@ -117,40 +83,9 @@ function showTemperature(response) {
   let currentIcon = document.querySelector("#main-icon");
   currentIcon.setAttribute("src", `${response.data.condition.icon_url}`);
   currentIcon.setAttribute("alt", `${response.data.condition.description}`);
-  convertFahrenheit.classList.remove("active");
-  convertCelsius.classList.add("active");
   getForecast(response.data.coordinates);
 }
-// show temperature of geolocation city
-//function showTemperatureLoc(response) {
-//  let temperature = Math.round(response.data.daily[0].temperature.day);
-//  let temperatureElement = document.querySelector("#temperature");
-//  temperatureElement.innerHTML = `${temperature}°C`;
-//  let temperatureDesc = document.querySelector("#temperature-description");
-//  temperatureDesc.innerHTML = response.data.daily[0].condition.description;
-//  let humidity = document.querySelector("#humidity");
-//  humidity.innerHTML = `Humidity: ${response.data.daily[0].temperature.humidity}%`;
-//  let windSpeed = document.querySelector("#wind");
-//  windSpeed.innerHTML = `Windspeed: ${Math.round(
-//    response.data.daily[0].wind.speed
-//  )}km/h`;
-//  let currentIcon = document.querySelector("#main-icon");
-//  currentIcon.setAttribute(
-//    "src",
-//    `${response.data.daily[0].condition.icon_url}`
-//  );
-//  currentIcon.setAttribute(
-//    "alt",
-//    `${response.data.daily[0].condition.description}`
-//  );
-//  let h1 = document.querySelector("h1");
-//  h1.innerHTML = response.data.city;
-//  let updateTime = document.querySelector(".last-updated");
-//  updateTime.innerHTML = formatDate(response.data.daily[0].time * 1000);
-//  convertFahrenheit.classList.remove("active");
-//  convertCelsius.classList.add("active");
-//  console.log(response);
-//}
+
 axios
   .get(`${apiUrl}${cityResult}&key=${apiKey}&units=metric`)
   .then(showTemperature);
@@ -202,7 +137,6 @@ function showPosition(position) {
   let lat = position.coords.latitude;
   let locUrl = `https://api.shecodes.io/weather/v1/current?lon=${long}&lat=${lat}&key=${apiKey}`;
   axios.get(`${locUrl}`).then(showTemperature);
-  celsiusActive = true;
 }
 
 function getCurrentPosition(position) {
@@ -214,7 +148,6 @@ currentLoc.addEventListener("click", getCurrentPosition);
 
 function displayForecast(response) {
   let forecast = response.data.daily;
-  console.log(response.data.daily);
   let forecastElement = document.querySelector("#weather-forecast");
   let forecastHTML = "";
   forecast.forEach(function (forecastDay, index) {
@@ -224,13 +157,14 @@ function displayForecast(response) {
         `<div class="col forecast-col h-100">
        <div class="row forecast-day">${formatDay(forecastDay.time)}</div>
        <div class="row">
-       <div class="col"></div>
+
        <div class="col forecast-icon">
          <img src=
         "${forecastDay.condition.icon_url}" alt=
       "${forecastDay.condition.description}"></div>
-      <div class="col"></div>
+
        </div>
+       <div class="row forecast-desc">${forecastDay.condition.description}</div>
        <div class="row forecast-temp">
          <span class="forecast-min">${Math.round(
            forecastDay.temperature.minimum
@@ -239,13 +173,11 @@ function displayForecast(response) {
            forecastDay.temperature.maximum
          )}°C</span>
        </div>
-       <div class="row forecast-desc">${forecastDay.condition.description}</div>
+       
      </div>`;
     }
   });
   forecastElement.innerHTML = forecastHTML;
-  convertFahrenheit.classList.remove("active");
-  convertCelsius.classList.add("active");
 }
 function getForecast(coordinates) {
   let apiKey = "dc051b10a64333cf3ob6tb0e6afc3da3";
